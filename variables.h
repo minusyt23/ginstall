@@ -6,25 +6,25 @@
 
 extern struct _win {
     GtkWidget* window;
-    GtkBox* vbox;
+    GtkWidget* grid;
 
-    GtkStackSidebar* sidebar;
-    GtkStack* stack;
+    GtkWidget* sidebar;
+    GtkWidget* stack;
 
-    GtkGrid* hgrid;
-    GtkButton* installButton;
+    GtkWidget* infoHbox;
+    GtkWidget* installButton;
 
     struct {
-
+        GtkWidget* testButton;
     } network;
     struct {
-
+        GtkWidget* testButton;
     } partition;
     struct {
-
+        GtkWidget* testButton;
     } user;
     struct {
-
+        GtkWidget* testButton;
     } basepkg;
 } win;
 

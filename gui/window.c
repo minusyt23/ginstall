@@ -2,6 +2,7 @@
 #include "../variables.h"
 
 #include "sidebar.c"
+#include "install.c"
 
 // Callback goes here
 
@@ -21,7 +22,16 @@ void make_window(void) {
     gtk_widget_set_size_request(GTK_WIDGET(win.window), sw, sh);
 
     /* ADD WIDGETS */
+    win.grid = gtk_grid_new();
+    gtk_grid_set_row_homogeneous(GTK_GRID(win.grid), FALSE);
+    gtk_grid_set_column_homogeneous(GTK_GRID(win.grid), FALSE);
+    
+
     make_sidebar();
+    make_install();
+    
+    // Give grid to window.
+    gtk_window_set_child(GTK_WINDOW(win.window), win.grid);
 
     // Show window
     gtk_window_present (GTK_WINDOW(win.window));
