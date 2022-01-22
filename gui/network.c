@@ -3,6 +3,6 @@
 
 // Callback goes here
 
-void make_partition() {
-    
+void make_network(void) {
+
 }

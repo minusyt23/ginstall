@@ -1,32 +1,20 @@
+#include <stdlib.h>
+#define MAIN
+
 #include <gtk/gtk.h>
-
-static void on_activate (GtkApplication *app) {
-    // Create a new window
-    GtkWidget *window = gtk_application_window_new (app);
-    // Create a new button
-    GtkWidget *button = gtk_button_new_with_label ("Hello, World!");
-    // When the button is clicked, close the window passed as an argument
-    g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_window_close), window);
-    gtk_window_set_child (GTK_WINDOW (window), button);
-
-    // Get screen size
-    GdkDisplay* dp = gdk_display_get_default();
-    GdkMonitor* mt = g_list_model_get_item((gdk_display_get_monitors(dp)), 0);
-    GdkRectangle geometry;
-    gdk_monitor_get_geometry(mt, &geometry);
-    int sw = geometry.width; int sh = geometry.height;
-
-    // make fullscreen
-    gtk_widget_set_size_request(GTK_WIDGET (window), sw, sh);
-
-    // show on screen
-    gtk_window_present (GTK_WINDOW (window));
-}
+#include "variables.h"
+#include "./gui/window.c"
 
 int main(int argc, char **argv) {
-    // Create a new application
-    GtkApplication *app = gtk_application_new ("com.example.GtkApplication",
-                                               G_APPLICATION_FLAGS_NONE);
-    g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
-    return g_application_run (G_APPLICATION (app), argc, argv);
+    // You could use GtkApplications, but I don't think it's useful here.
+    gtk_init();
+
+    GMainLoop *loop = g_main_loop_new(NULL, FALSE);
+
+    // Initialize GUI
+    make_window();
+
+    g_main_loop_run(loop);
+
+    return EXIT_SUCCESS;
 }
