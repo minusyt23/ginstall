@@ -5,7 +5,7 @@
 #include "variables.h"
 #include "./gui/window.c"
 
-int main(int argc, char **argv) {
+int main(void) {
     // You could use GtkApplications, but I don't think it's useful here.
     gtk_init();
 
