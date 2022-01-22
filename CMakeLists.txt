@@ -1,0 +1,6 @@
+project(ginstall)
+
+# Bad idea but generally works
+file(GLOB ginstall_code CONFIGURE_DEPENDS "*.h" "*.c")
+
+add_executable(ginstall ${ginstall_code})
