@@ -6,3 +6,6 @@ cmake . -B ./build
 
 # go to build
 cd build
+
+# run make
+make
